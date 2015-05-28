@@ -1,0 +1,7 @@
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Release\GZBServer.exe.config
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Release\GZBServer.exe
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Release\GZBServer.MainWindow.resources
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Release\GZBServer.Properties.Resources.resources
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Release\GZBServer.csproj.GenerateResource.Cache
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Release\GZBServer.exe
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Release\GZBServer.csprojResolveAssemblyReference.cache
