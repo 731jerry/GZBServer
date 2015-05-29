@@ -21,29 +21,45 @@ namespace GZBServer
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            //checkOnlineUserTimer_function();
             checkOnlineUserTimer.Enabled = true;
             addLog("服务端已启动...");
+            addLog("已连接到" + DatabaseManager.Ins.ConnStr);
         }
 
         private void checkOnlineUserTimer_Tick(object sender, EventArgs e)
         {
-            checkOnlineExpireUser("id IN (SELECT id FROM (SELECT * FROM users) AS online WHERE TIMESTAMPDIFF(SECOND,GZB_lastlogontime,NOW()) > 80 AND GZB_isonline = 1)");
+            checkOnlineUserTimer_function();
+        }
+
+        private void checkOnlineUserTimer_function(){
+            String sql = "UPDATE users SET GZB_isonline = 0 WHERE id IN (SELECT id FROM (SELECT * FROM users) AS online WHERE TIMESTAMPDIFF(SECOND,GZB_lastlogontime,NOW()) > @time AND GZB_isonline = 1)";
+            List<MySqlParameter> Paramter = new List<MySqlParameter>();
+            Paramter.Add(new MySqlParameter("@time", secondOnlineUserTextBox.Text));
+            checkOnlineExpireUser(sql, Paramter);
+            checkOnlineUser();
         }
 
         private void ClearUserOnlineInfoButton_Click(object sender, EventArgs e)
         {
-            checkOnlineExpireUser("id IN (SELECT id FROM (SELECT * FROM users) AS online WHERE TIMESTAMPDIFF(SECOND,GZB_lastlogontime,NOW()) > 80 AND GZB_isonline = 1)");
+            String sql = "UPDATE users SET GZB_isonline = 0 WHERE id IN (SELECT id FROM (SELECT * FROM users) AS online WHERE TIMESTAMPDIFF(SECOND,GZB_lastlogontime,NOW()) > @time AND GZB_isonline = 1)";
+            List<MySqlParameter> Paramter = new List<MySqlParameter>();
+            Paramter.Add(new MySqlParameter("@time", secondOnlineUserTextBox.Text));
+            checkOnlineExpireUser(sql, Paramter);
         }
 
         private void ClearAllUserOnlineInfoButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("是否确认要清空所有在线用户?", "提示", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                checkOnlineExpireUser("");
+                String sql = "UPDATE users SET GZB_isonline = @value";
+                List<MySqlParameter> Paramter = new List<MySqlParameter>();
+                Paramter.Add(new MySqlParameter("@value", "0"));
+                checkOnlineExpireUser(sql, Paramter);
             }
         }
 
-        private void checkOnlineExpireUser(String condition)
+        private void checkOnlineExpireUser(String sql, List<MySqlParameter> Paramter)
         {
             //UPDATE users SET GZB_isonline = 0 WHERE id IN (SELECT id FROM (SELECT * FROM users) AS online WHERE TIMESTAMPDIFF(SECOND,GZB_lastlogontime,NOW()) > 80 AND GZB_isonline = 1)
             try
@@ -58,9 +74,6 @@ namespace GZBServer
                 Paramter.Add(new MySqlParameter("@serverinfo", (ConfManager.Ins.currentConf.serverid + "-%")));
                 DataTable data = DbManager.Ins.ExcuteDataTable(sql, Paramter.ToArray());  
                 */
-                String sql = "UPDATE users SET GZB_isonline = 0 WHERE id IN (SELECT id FROM (SELECT * FROM users) AS online WHERE TIMESTAMPDIFF(SECOND,GZB_lastlogontime,NOW()) > @time AND GZB_isonline = 1)";
-                List<MySqlParameter> Paramter = new List<MySqlParameter>();
-                Paramter.Add(new MySqlParameter("@time", secondOnlineUserTextBox.Text));
 
                 int affactedRows = DatabaseManager.Ins.ExecuteNonquery(sql, Paramter.ToArray());
                 if (affactedRows > 0)
@@ -72,7 +85,24 @@ namespace GZBServer
             {
                 addLog("checkOnlineExpireUser出现错误 " + ex.Message);
             }
+        }
 
+        private void checkOnlineUser()
+        {
+            try
+            {
+                string onlineSql = @"select COUNT(*) from users where GZB_isonline = 1";
+                string userSql = @"select COUNT(*) from users";
+
+                int onlineResultList =Convert.ToInt32(DatabaseManager.Ins.ExecuteScalar(onlineSql, null));
+                int userResultList = Convert.ToInt32(DatabaseManager.Ins.ExecuteScalar(userSql, null));
+
+                onlineUserLabel.Text = "在线用户:" + onlineResultList.ToString() + "/" + userResultList.ToString();
+            }
+            catch (Exception ex)
+            {
+                addLog("checkOnlineUser出现错误 " + ex.Message);
+            }
         }
 
         private void addLog(String str)

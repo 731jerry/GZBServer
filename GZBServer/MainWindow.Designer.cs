@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.checkOnlineUserTimer = new System.Windows.Forms.Timer(this.components);
             this.ClearUserOnlineInfoButton = new System.Windows.Forms.Button();
             this.secondOnlineUserTextBox = new System.Windows.Forms.TextBox();
             this.ClearAllUserOnlineInfoButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LogTextBox = new System.Windows.Forms.TextBox();
+            this.onlineUserLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkOnlineUserTimer
@@ -61,7 +63,7 @@
             this.secondOnlineUserTextBox.Name = "secondOnlineUserTextBox";
             this.secondOnlineUserTextBox.Size = new System.Drawing.Size(58, 25);
             this.secondOnlineUserTextBox.TabIndex = 17;
-            this.secondOnlineUserTextBox.Text = "120";
+            this.secondOnlineUserTextBox.Text = "80";
             this.secondOnlineUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ClearAllUserOnlineInfoButton
@@ -96,19 +98,33 @@
             this.LogTextBox.Size = new System.Drawing.Size(350, 281);
             this.LogTextBox.TabIndex = 21;
             // 
+            // onlineUserLabel
+            // 
+            this.onlineUserLabel.AutoSize = true;
+            this.onlineUserLabel.Location = new System.Drawing.Point(44, 29);
+            this.onlineUserLabel.Name = "onlineUserLabel";
+            this.onlineUserLabel.Size = new System.Drawing.Size(102, 20);
+            this.onlineUserLabel.TabIndex = 22;
+            this.onlineUserLabel.Text = "在线用户检测...";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 305);
+            this.Controls.Add(this.onlineUserLabel);
             this.Controls.Add(this.LogTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ClearAllUserOnlineInfoButton);
             this.Controls.Add(this.ClearUserOnlineInfoButton);
             this.Controls.Add(this.secondOnlineUserTextBox);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "管账宝服务端";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
@@ -124,6 +140,7 @@
         private System.Windows.Forms.Button ClearAllUserOnlineInfoButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox LogTextBox;
+        private System.Windows.Forms.Label onlineUserLabel;
     }
 }
 

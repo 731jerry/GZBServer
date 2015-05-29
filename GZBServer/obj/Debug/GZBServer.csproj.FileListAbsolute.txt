@@ -1,9 +1,9 @@
-\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Debug\GZBServer.exe.config
-\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Debug\GZBServer.exe
-\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Debug\GZBServer.pdb
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\GZBServer.csprojResolveAssemblyReference.cache
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\GZBServer.MainWindow.resources
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\GZBServer.Properties.Resources.resources
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\GZBServer.csproj.GenerateResource.Cache
-\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\GZBServer.exe
-\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\GZBServer.pdb
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Debug\管账宝服务端.exe.config
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Debug\管账宝服务端.exe
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Debug\管账宝服务端.pdb
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\管账宝服务端.exe
+\\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\管账宝服务端.pdb
