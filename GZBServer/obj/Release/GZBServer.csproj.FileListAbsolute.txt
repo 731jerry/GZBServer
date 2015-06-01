@@ -5,3 +5,11 @@
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Release\管账宝服务端.exe.config
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Release\管账宝服务端.exe
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Release\管账宝服务端.exe
+D:\Project\GZBServer\GZBServer\bin\Release\管账宝服务端.exe.config
+D:\Project\GZBServer\GZBServer\bin\Release\管账宝服务端.exe
+D:\Project\GZBServer\GZBServer\bin\Release\MySql.Data.dll
+D:\Project\GZBServer\GZBServer\obj\Release\GZBServer.csprojResolveAssemblyReference.cache
+D:\Project\GZBServer\GZBServer\obj\Release\GZBServer.MainWindow.resources
+D:\Project\GZBServer\GZBServer\obj\Release\GZBServer.Properties.Resources.resources
+D:\Project\GZBServer\GZBServer\obj\Release\GZBServer.csproj.GenerateResource.Cache
+D:\Project\GZBServer\GZBServer\obj\Release\管账宝服务端.exe

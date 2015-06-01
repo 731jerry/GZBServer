@@ -32,11 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.checkOnlineUserTimer = new System.Windows.Forms.Timer(this.components);
             this.ClearUserOnlineInfoButton = new System.Windows.Forms.Button();
-            this.secondOnlineUserTextBox = new System.Windows.Forms.TextBox();
             this.ClearAllUserOnlineInfoButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LogTextBox = new System.Windows.Forms.TextBox();
             this.onlineUserLabel = new System.Windows.Forms.Label();
+            this.secondOnlineUserTextBox = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.secondOnlineUserTextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // checkOnlineUserTimer
@@ -55,16 +56,6 @@
             this.ClearUserOnlineInfoButton.Text = "立即清理";
             this.ClearUserOnlineInfoButton.UseVisualStyleBackColor = true;
             this.ClearUserOnlineInfoButton.Click += new System.EventHandler(this.ClearUserOnlineInfoButton_Click);
-            // 
-            // secondOnlineUserTextBox
-            // 
-            this.secondOnlineUserTextBox.Location = new System.Drawing.Point(119, 70);
-            this.secondOnlineUserTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.secondOnlineUserTextBox.Name = "secondOnlineUserTextBox";
-            this.secondOnlineUserTextBox.Size = new System.Drawing.Size(58, 25);
-            this.secondOnlineUserTextBox.TabIndex = 17;
-            this.secondOnlineUserTextBox.Text = "80";
-            this.secondOnlineUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ClearAllUserOnlineInfoButton
             // 
@@ -85,7 +76,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 20;
-            this.label1.Text = "间隔时间:";
+            this.label1.Text = "允许间隔:";
             // 
             // LogTextBox
             // 
@@ -107,17 +98,36 @@
             this.onlineUserLabel.TabIndex = 22;
             this.onlineUserLabel.Text = "在线用户检测...";
             // 
+            // secondOnlineUserTextBox
+            // 
+            this.secondOnlineUserTextBox.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.secondOnlineUserTextBox.Location = new System.Drawing.Point(118, 71);
+            this.secondOnlineUserTextBox.Name = "secondOnlineUserTextBox";
+            this.secondOnlineUserTextBox.ReadOnly = true;
+            this.secondOnlineUserTextBox.Size = new System.Drawing.Size(59, 25);
+            this.secondOnlineUserTextBox.TabIndex = 23;
+            this.secondOnlineUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.secondOnlineUserTextBox.Value = new decimal(new int[] {
+            65,
+            0,
+            0,
+            0});
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 305);
+            this.Controls.Add(this.secondOnlineUserTextBox);
             this.Controls.Add(this.onlineUserLabel);
             this.Controls.Add(this.LogTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ClearAllUserOnlineInfoButton);
             this.Controls.Add(this.ClearUserOnlineInfoButton);
-            this.Controls.Add(this.secondOnlineUserTextBox);
             this.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -127,6 +137,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "管账宝服务端";
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.secondOnlineUserTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,11 +147,11 @@
 
         private System.Windows.Forms.Timer checkOnlineUserTimer;
         private System.Windows.Forms.Button ClearUserOnlineInfoButton;
-        private System.Windows.Forms.TextBox secondOnlineUserTextBox;
         private System.Windows.Forms.Button ClearAllUserOnlineInfoButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox LogTextBox;
         private System.Windows.Forms.Label onlineUserLabel;
+        private System.Windows.Forms.NumericUpDown secondOnlineUserTextBox;
     }
 }
 

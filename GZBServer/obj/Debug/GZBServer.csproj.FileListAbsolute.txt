@@ -7,3 +7,13 @@
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\bin\Debug\管账宝服务端.pdb
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\管账宝服务端.exe
 \\psf\Home\Documents\Programs\Winform\GZBServer\GZBServer\obj\Debug\管账宝服务端.pdb
+D:\Project\GZBServer\GZBServer\bin\Debug\管账宝服务端.exe.config
+D:\Project\GZBServer\GZBServer\bin\Debug\管账宝服务端.exe
+D:\Project\GZBServer\GZBServer\bin\Debug\管账宝服务端.pdb
+D:\Project\GZBServer\GZBServer\bin\Debug\MySql.Data.dll
+D:\Project\GZBServer\GZBServer\obj\Debug\GZBServer.csprojResolveAssemblyReference.cache
+D:\Project\GZBServer\GZBServer\obj\Debug\GZBServer.MainWindow.resources
+D:\Project\GZBServer\GZBServer\obj\Debug\GZBServer.Properties.Resources.resources
+D:\Project\GZBServer\GZBServer\obj\Debug\GZBServer.csproj.GenerateResource.Cache
+D:\Project\GZBServer\GZBServer\obj\Debug\管账宝服务端.exe
+D:\Project\GZBServer\GZBServer\obj\Debug\管账宝服务端.pdb

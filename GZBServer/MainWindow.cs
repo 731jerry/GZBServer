@@ -19,6 +19,7 @@ namespace GZBServer
             InitializeComponent();
         }
 
+        private int checkOnlineUserTimerCount = 0;
         private void MainWindow_Load(object sender, EventArgs e)
         {
             //checkOnlineUserTimer_function();
@@ -30,9 +31,11 @@ namespace GZBServer
         private void checkOnlineUserTimer_Tick(object sender, EventArgs e)
         {
             checkOnlineUserTimer_function();
+            checkOnlineUserTimerCount++;
         }
 
-        private void checkOnlineUserTimer_function(){
+        private void checkOnlineUserTimer_function()
+        {
             String sql = "UPDATE users SET GZB_isonline = 0 WHERE id IN (SELECT id FROM (SELECT * FROM users) AS online WHERE TIMESTAMPDIFF(SECOND,GZB_lastlogontime,NOW()) > @time AND GZB_isonline = 1)";
             List<MySqlParameter> Paramter = new List<MySqlParameter>();
             Paramter.Add(new MySqlParameter("@time", secondOnlineUserTextBox.Text));
@@ -94,10 +97,16 @@ namespace GZBServer
                 string onlineSql = @"select COUNT(*) from users where GZB_isonline = 1";
                 string userSql = @"select COUNT(*) from users";
 
-                int onlineResultList =Convert.ToInt32(DatabaseManager.Ins.ExecuteScalar(onlineSql, null));
+                int onlineResultList = Convert.ToInt32(DatabaseManager.Ins.ExecuteScalar(onlineSql, null));
                 int userResultList = Convert.ToInt32(DatabaseManager.Ins.ExecuteScalar(userSql, null));
 
-                onlineUserLabel.Text = "在线用户:" + onlineResultList.ToString() + "/" + userResultList.ToString();
+                String log = "在线用户:" + onlineResultList.ToString() + "/" + userResultList.ToString();
+                if (checkOnlineUserTimerCount % 360 == 0)
+                {
+                    checkOnlineUserTimerCount = 0;
+                    addLog(log);
+                }
+                onlineUserLabel.Text = log;
             }
             catch (Exception ex)
             {
@@ -107,8 +116,33 @@ namespace GZBServer
 
         private void addLog(String str)
         {
-            LogTextBox.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "->" + str + "\r\n";
+            String log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "->" + str + "\r\n";
+            LogTextBox.Text += log;
+            RecordLog(log);
         }
 
+        // 记录错误
+        private void RecordLog(String logString)
+        {
+            //String log = preLog + "\r\n###异常消息Message: " + ex.Message + "\r\n###当前异常StackTrace: " + ex.StackTrace + "\r\n===================================================\r\n";
+            String fileName = System.Environment.CurrentDirectory + @"\log.txt";
+            String fileString = "";
+            if (System.IO.File.Exists(fileName))
+            {
+                using (System.IO.FileStream fszz = System.IO.File.OpenRead(fileName))
+                {
+                    byte[] bytes = new byte[fszz.Length];
+                    fszz.Read(bytes, 0, bytes.Length);
+
+                    fileString = Encoding.UTF8.GetString(bytes);
+                }
+            }
+            using (System.IO.FileStream fs = System.IO.File.Create(fileName))
+            {
+                StringBuilder sb = new StringBuilder();
+                byte[] info = new UTF8Encoding().GetBytes(fileString + logString);
+                fs.Write(info, 0, info.Length);
+            }
+        }
     }
 }
