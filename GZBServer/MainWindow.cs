@@ -118,6 +118,8 @@ namespace GZBServer
         {
             String log = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "->" + str + "\r\n";
             LogTextBox.Text += log;
+            LogTextBox.SelectionStart = LogTextBox.Text.Length;
+            LogTextBox.ScrollToCaret();
             RecordLog(log);
         }
 
@@ -144,5 +146,6 @@ namespace GZBServer
                 fs.Write(info, 0, info.Length);
             }
         }
+
     }
 }
