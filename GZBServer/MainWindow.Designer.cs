@@ -37,6 +37,8 @@
             this.LogTextBox = new System.Windows.Forms.TextBox();
             this.onlineUserLabel = new System.Windows.Forms.Label();
             this.secondOnlineUserTextBox = new System.Windows.Forms.NumericUpDown();
+            this.getAppVersionTextBox = new System.Windows.Forms.TextBox();
+            this.setAppVersionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.secondOnlineUserTextBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             // ClearUserOnlineInfoButton
             // 
             this.ClearUserOnlineInfoButton.ForeColor = System.Drawing.Color.Black;
-            this.ClearUserOnlineInfoButton.Location = new System.Drawing.Point(48, 123);
+            this.ClearUserOnlineInfoButton.Location = new System.Drawing.Point(48, 176);
             this.ClearUserOnlineInfoButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ClearUserOnlineInfoButton.Name = "ClearUserOnlineInfoButton";
             this.ClearUserOnlineInfoButton.Size = new System.Drawing.Size(129, 36);
@@ -60,7 +62,7 @@
             // ClearAllUserOnlineInfoButton
             // 
             this.ClearAllUserOnlineInfoButton.ForeColor = System.Drawing.Color.Red;
-            this.ClearAllUserOnlineInfoButton.Location = new System.Drawing.Point(48, 183);
+            this.ClearAllUserOnlineInfoButton.Location = new System.Drawing.Point(48, 236);
             this.ClearAllUserOnlineInfoButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ClearAllUserOnlineInfoButton.Name = "ClearAllUserOnlineInfoButton";
             this.ClearAllUserOnlineInfoButton.Size = new System.Drawing.Size(129, 36);
@@ -117,11 +119,32 @@
             0,
             0});
             // 
+            // getAppVersionTextBox
+            // 
+            this.getAppVersionTextBox.Location = new System.Drawing.Point(48, 119);
+            this.getAppVersionTextBox.Name = "getAppVersionTextBox";
+            this.getAppVersionTextBox.Size = new System.Drawing.Size(64, 25);
+            this.getAppVersionTextBox.TabIndex = 24;
+            this.getAppVersionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // setAppVersionButton
+            // 
+            this.setAppVersionButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.setAppVersionButton.Location = new System.Drawing.Point(118, 120);
+            this.setAppVersionButton.Name = "setAppVersionButton";
+            this.setAppVersionButton.Size = new System.Drawing.Size(59, 25);
+            this.setAppVersionButton.TabIndex = 25;
+            this.setAppVersionButton.Text = "设置";
+            this.setAppVersionButton.UseVisualStyleBackColor = true;
+            this.setAppVersionButton.Click += new System.EventHandler(this.setAppVersionButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 305);
+            this.Controls.Add(this.setAppVersionButton);
+            this.Controls.Add(this.getAppVersionTextBox);
             this.Controls.Add(this.secondOnlineUserTextBox);
             this.Controls.Add(this.onlineUserLabel);
             this.Controls.Add(this.LogTextBox);
@@ -152,6 +175,8 @@
         private System.Windows.Forms.TextBox LogTextBox;
         private System.Windows.Forms.Label onlineUserLabel;
         private System.Windows.Forms.NumericUpDown secondOnlineUserTextBox;
+        private System.Windows.Forms.TextBox getAppVersionTextBox;
+        private System.Windows.Forms.Button setAppVersionButton;
     }
 }
 

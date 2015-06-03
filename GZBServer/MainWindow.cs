@@ -31,6 +31,7 @@ namespace GZBServer
         private void checkOnlineUserTimer_Tick(object sender, EventArgs e)
         {
             checkOnlineUserTimer_function();
+            getAppVersion();
             checkOnlineUserTimerCount++;
         }
 
@@ -94,14 +95,14 @@ namespace GZBServer
         {
             try
             {
-                string onlineSql = @"select COUNT(*) from users where GZB_isonline = 1";
-                string userSql = @"select COUNT(*) from users";
+                String onlineSql = @"select COUNT(*) from users where GZB_isonline = 1";
+                String userSql = @"select COUNT(*) from users";
 
                 int onlineResultList = Convert.ToInt32(DatabaseManager.Ins.ExecuteScalar(onlineSql, null));
                 int userResultList = Convert.ToInt32(DatabaseManager.Ins.ExecuteScalar(userSql, null));
 
                 String log = "在线用户:" + onlineResultList.ToString() + "/" + userResultList.ToString();
-                if (checkOnlineUserTimerCount % 360 == 0)
+                if (checkOnlineUserTimerCount % 360 == 0) // 半小时
                 {
                     checkOnlineUserTimerCount = 0;
                     addLog(log);
@@ -111,6 +112,48 @@ namespace GZBServer
             catch (Exception ex)
             {
                 addLog("checkOnlineUser出现错误 " + ex.Message);
+            }
+        }
+
+
+
+        private String getAppVersion()
+        {
+            String versionResult = "";
+            try
+            {
+                String Sql = @"select configValue from config where configKey = 'GZB_update_version'";
+
+                versionResult = (String)(DatabaseManager.Ins.ExecuteScalar(Sql, null));
+
+                String log = "当前版本:" + versionResult.ToString();
+                if (checkOnlineUserTimerCount % 360 == 0) // 半小时
+                {
+                    addLog(log);
+                }
+                getAppVersionTextBox.Text = versionResult;
+            }
+            catch (Exception ex)
+            {
+                addLog("getAppVersion出现错误 " + ex.Message);
+            }
+            return versionResult;
+        }
+
+        private void setAppVersionButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String Sql = @"UPDATE config SET configValue = '" + getAppVersionTextBox.Text + "' where configKey = 'GZB_update_version'";
+
+                DatabaseManager.Ins.ExecuteNonquery(Sql, null);
+
+                String log = "已设置版本:" + getAppVersionTextBox.Text;
+                addLog(log);
+            }
+            catch (Exception ex)
+            {
+                addLog("getAppVersion出现错误 " + ex.Message);
             }
         }
 
@@ -144,5 +187,7 @@ namespace GZBServer
                 fs.Write(info, 0, info.Length);
             }
         }
+
+
     }
 }
