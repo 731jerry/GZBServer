@@ -125,10 +125,7 @@ namespace GZBServer
                 versionResult = (String)(DatabaseManager.Ins.ExecuteScalar(Sql, null));
 
                 String log = "当前版本:" + versionResult.ToString();
-                if (checkOnlineUserTimerCount % 360 == 0) // 半小时
-                {
-                    addLog(log);
-                }
+                //addLog(log);
                 getAppVersionTextBox.Text = versionResult;
             }
             catch (Exception ex)
