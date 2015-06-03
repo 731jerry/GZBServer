@@ -19,3 +19,10 @@
 2015-06-01 21:43:28->服务端已启动...
 2015-06-01 21:43:28->已连接到server=127.0.0.1; user id=root; password=; database=vivid;Charset=utf8
 >>>>>>> 29c319b61e0ba530c9503905db1273d08da96a2a
+2015-06-03 09:54:11->服务端已启动...
+2015-06-03 09:54:11->已连接到server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8
+2015-06-03 09:54:25->在线用户:0/6
+2015-06-03 09:54:26->当前版本:1.5.3
+2015-06-03 09:54:48->已设置版本:1.5.3
+2015-06-03 09:55:05->服务端已启动...
+2015-06-03 09:55:05->已连接到server=127.0.0.1; user id=root; password=; database=vivid;Charset=utf8

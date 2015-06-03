@@ -115,8 +115,6 @@ namespace GZBServer
             }
         }
 
-
-
         private String getAppVersion()
         {
             String versionResult = "";
@@ -190,9 +188,5 @@ namespace GZBServer
             }
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 29c319b61e0ba530c9503905db1273d08da96a2a
     }
 }
