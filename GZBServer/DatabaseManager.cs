@@ -127,13 +127,15 @@ namespace GZBServer
         {
             using (MySqlConnection con = new MySqlConnection(ConnStr))
             {
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                if (paras != null)
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
                 {
-                    cmd.Parameters.AddRange(paras);
+                    if (paras != null)
+                    {
+                        cmd.Parameters.AddRange(paras);
+                    }
+                    con.Open();
+                    return cmd.ExecuteNonQuery();
                 }
-                con.Open();
-                return cmd.ExecuteNonQuery();
             }
         }
 
@@ -147,11 +149,13 @@ namespace GZBServer
         {
             using (MySqlConnection con = new MySqlConnection(ConnStr))
             {
-                MySqlCommand cmd = new MySqlCommand(procname, con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddRange(paras);
-                con.Open();
-                return cmd.ExecuteNonQuery();
+                using (MySqlCommand cmd = new MySqlCommand(procname, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(paras);
+                    con.Open();
+                    return cmd.ExecuteNonQuery();
+                }
             }
         }
 
@@ -165,13 +169,15 @@ namespace GZBServer
         {
             using (MySqlConnection con = new MySqlConnection(ConnStr))
             {
-                MySqlCommand cmd = new MySqlCommand(procname, con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                MySqlDataAdapter sqlda = new MySqlDataAdapter(procname, con);
-                sqlda.SelectCommand.Parameters.AddRange(paras);
-                DataTable dt = new DataTable();
-                sqlda.Fill(dt);
-                return dt;
+                using (MySqlCommand cmd = new MySqlCommand(procname, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    MySqlDataAdapter sqlda = new MySqlDataAdapter(procname, con);
+                    sqlda.SelectCommand.Parameters.AddRange(paras);
+                    DataTable dt = new DataTable();
+                    sqlda.Fill(dt);
+                    return dt;
+                }
             }
         }
 
